@@ -71,6 +71,8 @@ class Einar(Thing):
 
     def interact(self, thing, hungover, key, earring, map):
         if self.hungover:
+            # 2 Tekur eitt líf af leikmanni
             return '2' + self.hungovermsg
         else:
-            return '0' + self.msg
+            # 3 breytir boolean gildinu hjá player í True
+            return '3' + self.msg

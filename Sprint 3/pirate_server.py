@@ -97,6 +97,8 @@ svo í annað herbergi með skipuninni <changeroom>.
                 elif interact_msg[0] == '2':
                     self.player.loseLife()
                     send_msg = interact_msg[1:] + '\nÞú missir eitt líf!'
+                elif interact_msg[0] == '3':
+                    self.player.map = True
                 self.csend.send(bytes(('1' + send_msg),'utf -8'))
 
             # Leikmaður kallar á whatshere

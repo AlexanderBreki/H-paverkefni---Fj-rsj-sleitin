@@ -62,15 +62,14 @@ class Bar(Room):
         self.josefina = Thing.Josefina()
         self.einar = Thing.Einar()
         self.description = """"
-Þú ert á barnum. Hann er ekki stór, varla nema lítill kofi
-við bryggjuna. Innan við er sterkur tóbaksfnykur. Við barinn
-stendur <barþjónn>, stór svertingi frá Kúbu, og raðar flöskum
-í hillur. Nokkrir gestir eru á barnum, við barborðið situr
-<Nonni> sjóræningi sem þú þekkir ágætlega, þig rámar óljóst
-í að þú hafir hitt hann í gærkvöldi. Í dimmu horni situr
+Þú ert á barnum. Hann er ekki stór, varla nema lítill kofi við bryggjuna.
+Innan við er sterkur tóbaksfnykur. Við barinn stendur <barþjónn>, stór
+svertingi frá Kúbu, og raðar flöskum í hillur. Nokkrir gestir eru á barnum,
+við barborðið situr <Nonni> sjóræningi sem þú þekkir ágætlega, þig rámar
+óljóst í að þú hafir hitt hann í gærkvöldi. Í dimmu horni situr
 <Einar gamli> og skrifar í bók. Framarlega í herberginu situr
-<Fröken Jósefína>, óskilgetin dóttir landsstjóra eyjunnar,
-við borð og drekkur úr vínglasi ásamt öðrum konum.
+<Fröken Jósefína>, óskilgetin dóttir landsstjóra eyjunnar, við borð og
+drekkur úr vínglasi ásamt öðrum konum.
          """
         super(Bar, self).__init__(self.name, self.hidden)
 
@@ -103,11 +102,11 @@ class Beach(Room):
         self.name = 'Strönd'
         self.things = '<kona> <kona> <skúr>'
         self.description = """
-Þú ert á ströndinni. Það er gott veður úti og sjórinn er lygn. Í
-fjörunni gengur ljóshærð <kona> og horfir út á sjóinn. Á ströndinni
-kemur þú auga á hóp katta, þegar þú nálgast þá sérðu tötraralegan
-mann liggja í miðjum kattahópnum með undarlega hliðartösku slengda
-um aðra öxlina, það er <Kristján> róni.
+Þú ert á ströndinni. Það er gott veður úti og sjórinn er lygn. Í fjörunni
+gengur ljóshærð <kona> og horfir út á sjóinn. Á ströndinni kemur þú auga á
+hóp katta, þegar þú nálgast þá sérðu tötraralegan mann liggja í miðjum
+kattahópnum með undarlega hliðartösku slengda um aðra öxlina, það er
+<Kristján> róni.
         """
         self.hidden = False
         super(Beach, self).__init__(self.name, self.hidden)
@@ -126,9 +125,9 @@ class Forrest(Room):
         self.name = 'Skógur'
         self.things = 'ssss'
         self.description = """
-Þú ert í skóginum. Það er þétt milli trjáa og þú sérð ekki mikið.
-Skyndilega kemur <villimaður> hlaupandi úr skóginum, hann er kviknakinn
-fyrir utan litla lendarskýlu. Hann stoppar hjá þér.
+Þú ert í skóginum. Það er þétt milli trjáa og þú sérð ekki mikið. Skyndilega
+kemur <villimaður> hlaupandi úr skóginum, hann er kviknakinn fyrir utan
+litla lendarskýlu. Hann stoppar hjá þér.
         """
         self.hidden = False
         super(Forrest, self).__init__(self.name, self.hidden)
