@@ -46,9 +46,9 @@ enda herbergisins er <skápur>.
         if thing == 'skápur':
             return self.locker.interact(thing, hungover, key, earring, map)
         elif thing == 'skrifborð':
-            return self.desk.interact()
+            return self.desk.interact(thing, hungover, key, earring, map)
         elif thing == 'rúm':
-            return self.bed.interact()
+            return self.bed.interact(thing, hungover, key, earring, map)
         else:
             return 'Þessi hlutur er ekki hér'
 
@@ -88,13 +88,13 @@ við borð og drekkur úr vínglasi ásamt öðrum konum.
 
     def interact(self, thing, hungover, key, earring, map):
         if thing == 'barþjónn':
-            return self.bartender.interact()
+            return self.bartender.interact(thing, hungover, key, earring, map)
         elif thing == 'Nonni':
-            return self.nonni.interact()
+            return self.nonni.interact(thing, hungover, key, earring, map)
         elif thing == 'Jósefína':
-            return self.josefina.interact()
+            return self.josefina.interact(thing, hungover, key, earring, map)
         elif thing == 'Einar':
-            return self.einar.interact()
+            return self.einar.interact(thing, hungover, key, earring, map)
         else:
             return 'Þessi hlutur er ekki hér'
 

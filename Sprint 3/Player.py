@@ -18,9 +18,9 @@ class Player():
         self.lifes += 1
 
     # Fall sem athugar hvort leikmaður sé á lífi
-    def isAlive(self):
-        if (self.lifes <= 0): return False
-        return True
+    def isDead(self):
+        if (self.lifes <= 0): return True
+        return False
 
     # Fall sem breytir staðsetningu leikmanns
     def changeroom(self, nextroom):

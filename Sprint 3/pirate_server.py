@@ -17,7 +17,19 @@ class PirateGame(object):
         self.crecive = crecive
         self.player = Player.Player()
         self.story = ('1' +
-"""Þú ert sjóræningi sem fékkst þér einum of mikið af rommi í gærkvöldi. Þér var treyst fyrir því að passa upp á fjársjóðskistu en eftir læti gærkvöldsins hefur þú ekki hugmynd um hvar hún er niður komin. Þú vaknar í káetunni þinni og þarft að leita að fjársjóðnum.
+"""
+Þú ert sjóræningi sem fékkst þér einum of mikið af rommi í gærkvöldi. Þér
+var treyst fyrir því að passa upp á fjársjóðskistu en eftir læti
+gærkvöldsins hefur þú ekki hugmynd um hvar hún er niður komin. Þú vaknar í
+káetunni þinni og þarft að leita að fjársjóðnum.
+
+Leikurinn er einfaldur. Þú byrjar í einu herbergi, þú getur séð hvaða
+herbergi það er með skipuninni <whereami>, þar inni eru hlutir sem þú getur
+valið að skoða nánar. Skipunin <whatshere> gefur þér lýsingu á herberginu,
+allir hlutir sem þú getur skoðað eru inni í <>. Skrifaðu nafnið á þeim til
+að skoða þá nánar. Þegar þú vilt færa þig milli herbergja getur þú fengið
+lista yfir alla mögulega áfangastaði með skipuninni <wherecanigo>, og farið
+svo í annað herbergi með skipuninni <changeroom>.
 """)
         self.skull = ('0' +
 """
@@ -109,6 +121,9 @@ class PirateGame(object):
             else:
                 send_msg = 'Ekki lögleg skipun'
                 self.csend.send(bytes(('1' + send_msg),'utf -8'))
+
+            if self.player.isDead():
+                send_msg = 'Þú dóst'
 
             recive_msg = self.crecive.recv(2048).decode('utf -8')
 

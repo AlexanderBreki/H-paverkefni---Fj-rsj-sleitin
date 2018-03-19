@@ -7,15 +7,14 @@ class Thing():
 class Locker(Thing):
     def __init__(self):
         self.name = 'Skápur'
-        self.locked = True
         self.msglocked = 'Skápurinn er læstur. Það er skráargat á hurðinni en það er enginn lykill í skránni.'
         self.msgopen = 'Fjársjóðurinn er fundinn! Til hamingju þú vannst'
         super(Locker, self).__init__(self.name)
     def interact(self, thing, hungover, key, earring, map):
-        if self.locked:
-            return '0' + self.msglocked
-        else:
+        if key:
             return '0' + self.msgopen
+        else:
+            return '0' + self.msglocked
 
 class Desk(Thing):
     def __init__(self):
@@ -56,7 +55,6 @@ class Josefina(Thing):
         self.name = 'Jósefína'
         self.emptyhandedmsg = 'Jósefína slær þig utan undir fyrir ódæðissemi gærkvöldsins. Hún spyr þig hvernig þú vogir þér að koma til hennar tómhentur.'
         self.msg = 'Hún þakkar þér fyrir gærkvöldið og réttir þér nokkur ópíumlauf til að rétta þig af. Hún minnist á að þú hafir talað mikið um Einar gamla og ráðleggur þér að tala við hann'
-        self.emptyhanded = True
 
     def interact(self, thing, hungover, key, earring, map):
         if earring:
