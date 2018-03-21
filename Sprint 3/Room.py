@@ -64,7 +64,7 @@ class Bar(Room):
         self.nonni = Thing.Nonni()
         self.josefina = Thing.Josefina()
         self.einar = Thing.Einar()
-        self.description = """"
+        self.description = """
 Þú ert á barnum. Hann er ekki stór, varla nema lítill kofi við bryggjuna.
 Innan við er sterkur tóbaksfnykur. Við barinn stendur <barþjónn>, stór
 svertingi frá Kúbu, og raðar flöskum í hillur. Nokkrir gestir eru á barnum,
@@ -107,15 +107,15 @@ class Beach(Room):
     def __init__(self):
         self.name = 'Strönd'
         self.things = ['Kristján', 'kona', 'skúr']
-        self.kristjan = Things.Kristjan()
+        self.kristjan = Thing.Kristjan()
         self.kona = Thing.Kona()
         self.skur = Thing.Skur()
         self.description = """
 Þú ert á ströndinni. Það er gott veður úti og sjórinn er lygn. Í fjörunni
-gengur ljóshærð <kona> og horfir út á sjóinn. Á ströndinni kemur þú auga á
-hóp katta, þegar þú nálgast þá sérðu tötraralegan mann liggja í miðjum
-kattahópnum með undarlega hliðartösku slengda um aðra öxlina, það er
-<Kristján> róni.
+gengur ljóshærð <kona> og horfir út á sjóinn. Rétt hjá henni er lítill
+<skúr>. Á ströndinni kemur þú auga á hóp katta, þegar þú nálgast þá sérðu
+tötraralegan mann liggja í miðjum kattahópnum með undarlega hliðartösku
+sslengda um aðra öxlina, það er <Kristján> róni.
         """
         self.hidden = False
         super(Beach, self).__init__(self.name, self.hidden)

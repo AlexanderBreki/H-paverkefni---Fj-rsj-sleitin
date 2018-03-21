@@ -7,8 +7,13 @@ class Thing():
 class Locker(Thing):
     def __init__(self):
         self.name = 'Skápur'
-        self.msglocked = 'Skápurinn er læstur. Það er skráargat á hurðinni en það er enginn lykill í skránni.'
-        self.msgopen = 'Fjársjóðurinn er fundinn! Til hamingju þú vannst'
+        self.msglocked = """
+Skápurinn er læstur. Það er skráargat á hurðinni en það er enginn lykill í
+skránni.
+"""
+        self.msgopen = """
+Fjársjóðurinn er fundinn! Til hamingju þú vannst
+"""
         super(Locker, self).__init__(self.name)
 
     def interact(self, thing, hungover, key, earring, map):
@@ -20,15 +25,23 @@ class Locker(Thing):
 class Desk(Thing):
     def __init__(self):
         self.name = 'Skrifborð'
-        self.msg = 'Á borðinu eru stórir staflar af bókum og rifið landakort. Í borðskúffunni er hálfétið epli sem er farið að mygla.'
+        self.msg = """
+Á borðinu eru stórir staflar af bókum og rifið landakort. Í borðskúffunni
+er hálfétið epli sem er farið að mygla.
+"""
         super(Desk, self).__init__(self.name)
+
     def interact(self, thing, hungover, key, earring, map):
         return '0' + self.msg
 
 class Bed(Thing):
     def __init__(self):
         self.name = 'Rúm'
-        self.msg = 'Rúmið er allt í óreiðu en þar er ekkert að finna nema hálftóma <viskíflösku>. Um borð í skipinu er nóg af rommi en viskíflöskur fást bara á barnum. Þú stingur flöskunni í jakkavasann.'
+        self.msg = """
+Rúmið er allt í óreiðu en þar er ekkert að finna nema hálftóma viskíflösku.
+Um borð í skipinu er nóg af rommi en viskíflöskur fást bara á barnum. Þú
+stingur flöskunni í jakkavasann.
+"""
         super(Bed, self).__init__(self.name)
     def interact(self, thing, hungover, key, earring, map):
         return '0' + self.msg
@@ -36,11 +49,22 @@ class Bed(Thing):
 class Bartender(Thing):
     def __init__(self):
         self.name = 'Barþjónn'
-        self.msg = 'Þú sýnir barþjóninum viskíflöskuna. Hann yppir öxlum og hristir hausinn, þeir selja ekki þessa tegund á barnum.'
+        self.msg1 = """
+Þú sýnir barþjóninum viskíflöskuna. Hann yppir öxlum og hristir hausinn,
+þeir selja ekki þessa tegund á barnum.
+"""
+        self.msg2 = """
+Barþjónninn nennir ekki að tala við þig
+"""
+        self.used = False
         super(Bartender, self).__init__(self.name)
 
     def interact(self, thing, hungover, key, earring, map):
-        return '0' + self.msg
+        if self.used:
+            self.used = True
+            return '0' + self.msg2
+        else:
+            return '0' + self.msg1
 
 class Nonni(Thing):
     def __init__(self):
@@ -55,9 +79,17 @@ class Nonni(Thing):
 class Josefina(Thing):
     def __init__(self):
         self.name = 'Jósefína'
-        self.emptyhandedmsg = 'Jósefína slær þig utan undir fyrir ódæðissemi gærkvöldsins. Hún spyr þig hvernig þú vogir þér að koma til hennar tómhentur.'
-        self.msg = 'Hún þakkar þér fyrir gærkvöldið og réttir þér nokkur ópíumlauf til að rétta þig af. Hún minnist á að þú hafir talað mikið um Einar gamla og ráðleggur þér að tala við hann'
-        super(Joseina, self).__init__(self.name)
+        self.emptyhandedmsg = """
+Jósefína slær þig utan undir fyrir ódæðissemi gærkvöldsins. Hún spyr þig
+hvernig þú vogir þér að koma til hennar tómhentur.
+"""
+        self.msg = """
+***************************************************************************
+Hún þakkar þér fyrir gærkvöldið og réttir þér nokkur ópíumlauf til að
+rétta þig af. Hún minnist á að þú hafir talað mikið um Einar gamla og
+ráðleggur þér að tala við hann.
+"""
+        super(Josefina, self).__init__(self.name)
 
     def interact(self, thing, hungover, key, earring, map):
         if earring:
@@ -68,8 +100,14 @@ class Josefina(Thing):
 class Einar(Thing):
     def __init__(self):
         self.name = 'Einar'
-        self.hungovermsg = 'Gamli maðurinn er gallharður bindindismaður, hann finnur áfengislyktina af þér og slær þig með þungum göngustaf.'
-        self.msg = 'Einar muldrar eitthvað og lætur þig fá dularfullt kort sem leiðir þig að skóginum'
+        self.hungovermsg = """
+Gamli maðurinn er gallharður bindindismaður, hann finnur áfengislyktina af
+þér og slær þig með þungum göngustaf.
+"""
+        self.msg = """
+Einar muldrar eitthvað og lætur þig fá dularfullt kort sem leiðir þig að
+skóginum.
+"""
         self.hungover = True
         super(Einar, self).__init__(self.name)
 
@@ -84,7 +122,7 @@ class Einar(Thing):
 class Kristjan(Thing):
     def __init__(self):
         self.name = 'Kristján'
-        self.msg = 'setja skilaboð hér'
+        self.msg = ' setja skilaboð hér'
         super(Kristjan, self).__init__(self.name)
 
     def interact(self, thing, hungover, key, earring, map):
@@ -93,20 +131,28 @@ class Kristjan(Thing):
 class Kona(Thing):
     def __init__(self):
         self.name = 'Kona'
-        self.msg = 'setja skilaboð hér'
+        self.msg = """
+Þú gengur upp að konunni og sérð að þetta er Pamela Anderson, hún er með
+stjörnustæla og hrindir þér á hrúgu af kröbbum
+"""
         super(Kona, self).__init__(self.name)
 
     def interact(self, thing, hungover, key, earring, map):
-        return self.msgS
+        return '2' + self.msg
 
 class Skur(Thing):
     def __init__(self):
-        self.name = 'Kona'
-        self.msg = 'setja skilaboð hér'
+        self.name = 'skúr'
+        self.msg = """
+***************************************************************************
+Skúrinn er hrörlegur og gamall, innan í honum er mikið af gömlu drasli.
+Ofan á hrúgunni finnur þú flösku af framandi drykk, Gatorade. Þú drekkur
+innihald flöskunnar og losnar við þynnkuna
+"""
         super(Skur, self).__init__(self.name)
 
     def interact(self, thing, hungover, key, earring, map):
-        return self.msg
+        return '4' + self.msg
 
 class Villimadur(Thing):
     def __init__(self):
