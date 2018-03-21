@@ -76,3 +76,35 @@ class Einar(Thing):
         else:
             # 3 breytir boolean gildinu hjá player í True
             return '3' + self.msg
+
+class Kristjan(Thing):
+    def __init__(self):
+        self.name = 'Kristján'
+        self.msg = 'setja skilaboð hér'
+
+    def interact(self, thing, hungover, key, earring, map):
+        return self.msg
+
+class Kona(Thing):
+    def __init__(self):
+        self.name = 'Kona'
+        self.msg = 'setja skilaboð hér'
+
+    def interact(self, thing, hungover, key, earring, map):
+        return self.
+
+class Skur(Thing):
+    def __init__(self):
+        self.name = 'Kona'
+        self.msg = 'setja skilaboð hér'
+
+    def interact(self, thing, hungover, key, earring, map):
+        return self.msg
+
+class Villimadur(Thing):
+    def __init__(self):
+        self.name = 'villimaður'
+        self.msg = 'setja skilaboð hér'
+
+    def interact(self, thing, hungover, key, earring, map):
+        return self.msg

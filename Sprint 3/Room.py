@@ -100,7 +100,10 @@ drekkur úr vínglasi ásamt öðrum konum.
 class Beach(Room):
     def __init__(self):
         self.name = 'Strönd'
-        self.things = '<kona> <kona> <skúr>'
+        self.things = ['Kristján', 'kona', 'skúr']
+        self.kristjan = Things.Kristjan()
+        self.kona = Things.Kona()
+        self.skur = Things.skur()
         self.description = """
 Þú ert á ströndinni. Það er gott veður úti og sjórinn er lygn. Í fjörunni
 gengur ljóshærð <kona> og horfir út á sjóinn. Á ströndinni kemur þú auga á
@@ -120,10 +123,21 @@ kattahópnum með undarlega hliðartösku slengda um aðra öxlina, það er
     def wherecanigo(self):
         return '<káeta> <bar>'
 
+    def interact(self, thing, hungover, key, earring, map):
+        if thing == 'Kristján':
+            return self.kristjan.interact(thing, hungover, key, earring, map)
+        elif thing == 'kona':
+            return self.kona.interact(thing, hungover, key, earring, map)
+        elif thing == 'skúr':
+            return self.skur.interact(thing, hungover, key, earring, map)
+        else:
+            return 'Þessi hlutur er ekki hér'
+
 class Forrest(Room):
     def __init__(self):
         self.name = 'Skógur'
-        self.things = 'ssss'
+        self.things = ['villimaður']
+        self.villimadur = Things.Villimadur()
         self.description = """
 Þú ert í skóginum. Það er þétt milli trjáa og þú sérð ekki mikið. Skyndilega
 kemur <villimaður> hlaupandi úr skóginum, hann er kviknakinn fyrir utan
@@ -140,3 +154,9 @@ litla lendarskýlu. Hann stoppar hjá þér.
 
     def wherecanigo(self):
         return '<káeta> <bar> <strönd>'
+
+def interact(self, thing, hungover, key, earring, map):
+    if thing == 'villimaður':
+        return self.villimadur.interact(thing, hungover, key, earring, map)
+    else:
+        return 'Þessi hlutur er ekki hér'
