@@ -39,8 +39,11 @@ enda herbergisins er <skápur>.
     def whereami(self):
         return self.description
 
-    def wherecanigo(self):
-        return '<bar> <strönd>'
+    def wherecanigo(self, map):
+        if map:
+            return '<bar> <strönd> <skógur>'
+        else:
+            return '<bar> <strönd>'
 
     def interact(self, thing, hungover, key, earring, map):
         if thing == 'skápur':
@@ -82,8 +85,11 @@ drekkur úr vínglasi ásamt öðrum konum.
     def whereami(self):
         return self.description
 
-    def wherecanigo(self):
-        return '<Káeta> <Strönd>'
+    def wherecanigo(self, map):
+        if map:
+            return '<Káeta> <Strönd> <skógur>'
+        else:
+            return '<Káeta> <Strönd>'
 
     def interact(self, thing, hungover, key, earring, map):
         if thing == 'barþjónn':
@@ -120,8 +126,11 @@ kattahópnum með undarlega hliðartösku slengda um aðra öxlina, það er
     def whereami(self):
         return self.description
 
-    def wherecanigo(self):
-        return '<káeta> <bar>'
+    def wherecanigo(self, map):
+        if map:
+            return '<káeta> <bar> <skógur>'
+        else:
+            return '<káeta> <bar>'
 
     def interact(self, thing, hungover, key, earring, map):
         if thing == 'Kristján':
@@ -152,7 +161,7 @@ litla lendarskýlu. Hann stoppar hjá þér.
     def whereami(self):
         return self.description
 
-    def wherecanigo(self):
+    def wherecanigo(self, map):
         return '<káeta> <bar> <strönd>'
 
 def interact(self, thing, hungover, key, earring, map):

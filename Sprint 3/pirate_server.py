@@ -93,6 +93,9 @@ svo í annað herbergi með skipuninni <changeroom>.
 
                 # Köllum á interact fall herbergisins
                 interact_msg = self.player.location.interact(recive_msg, self.player.hungover, self.player.key, self.player.earring, self.player.map)
+
+                # Skilgreinum skilaboðin sem við sendum til baka, sleppum fyrsta stakinu í þeim streng
+                # því hann er notaður til að skilgreina virkni hlutarins
                 send_msg = interact_msg[1:]
 
                 # Kóði 0 þýðir að ekkert gerist
@@ -112,18 +115,22 @@ svo í annað herbergi með skipuninni <changeroom>.
                 # Kóði 3 þýðir að leikmaður fær landakort
                 elif interact_msg[0] == '3':
                     self.player.map = True
+                    send_msg = interact_msg[1:] + '\nÞú ert kominn með landakort'
 
                 # Kóðinn 4 þýðir að leikmaður er ekki lengur þunnur
                 elif interact_msg[0] == '4':
                     self.player.hungover = False
+                    send_msg = interact_msg[1:] + '\nÞú er ekki lengur þunnur'
 
                 # Kóði 5 þýðir að leikmaður fær eyrnalokka
                 elif interact_msg[0] == '5':
                     self.player.earring = True
+                    send_msg = interact_msg[1:] + '\nÞú ert kominn með eyrnalokka'
 
                 # Kóði 6 þýðir að leikmaður er með lykilinn að skápnum
                 elif interact_msg[0] == '6':
                     self.player.key = True
+                    send_msg = interact_msg[1:] + '\nÞú ert kominn með lykilinn'
 
                 # Sendum svar skilaboð á client klasa
                 self.csend.send(bytes(('1' + send_msg),'utf -8'))
@@ -140,7 +147,7 @@ svo í annað herbergi með skipuninni <changeroom>.
 
             # Leikmaður kallar á changeroom
             elif recive_msg == 'changeroom':
-                send_msg = 'Í hvaða herbergi vilt þú fara? ' + self.player.location.wherecanigo()
+                send_msg = 'Í hvaða herbergi vilt þú fara? ' + self.player.location.wherecanigo(self.player.map)
                 self.csend.send(bytes(('1' + send_msg),'utf -8'))
                 recive_msg = self.crecive.recv(2048).decode('utf -8')
                 send_msg = self.player.changeroom(recive_msg)
