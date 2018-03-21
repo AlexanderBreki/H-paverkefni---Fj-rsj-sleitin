@@ -90,25 +90,37 @@ svo í annað herbergi með skipuninni <changeroom>.
                 interact_msg = self.player.location.interact(recive_msg, self.player.hungover, self.player.key, self.player.earring, self.player.map)
                 send_msg = interact_msg[1:]
 
-                # Kóðinn 0 þýðir að ekkert gerist
+                # Kóði 0 þýðir að ekkert gerist
                 if interact_msg == '0':
                     send_msg = interact_msg[1:]
 
-                # Kóðinn 1 þýðir að leikmaður fær eitt líf
+                # Kóði 1 þýðir að leikmaður fær eitt líf
                 if interact_msg[0] == '1':
                     self.player.getLife()
                     send_msg = interact_msg[1:] + '\nÞú færð eitt líf!'
 
-                # Kóðinn 2 þýðir að leikmaður missir eitt líf
+                # Kóði 2 þýðir að leikmaður missir eitt líf
                 elif interact_msg[0] == '2':
                     self.player.loseLife()
                     send_msg = interact_msg[1:] + '\nÞú missir eitt líf!'
 
-                # Kóðinn 3 þýðir að leikmaður fær landakort
+                # Kóði 3 þýðir að leikmaður fær landakort
                 elif interact_msg[0] == '3':
                     self.player.map = True
 
-                
+                # Kóðinn 4 þýðir að leikmaður er ekki lengur þunnur
+                elif interact_msg[0] == '4':
+                    self.player.hungover = False
+
+                # Kóði 5 þýðir að leikmaður fær eyrnalokka
+                elif interact_msg[0] == '5':
+                    self.player.earring = True
+
+                # Kóði 6 þýðir að leikmaður er með lykilinn að skápnum
+                elif interact_msg[0] == '6':
+                    self.player.key = True
+
+
                 self.csend.send(bytes(('1' + send_msg),'utf -8'))
 
             # Leikmaður kallar á whatshere
