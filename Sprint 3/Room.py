@@ -108,8 +108,8 @@ class Beach(Room):
         self.name = 'Strönd'
         self.things = ['Kristján', 'kona', 'skúr']
         self.kristjan = Things.Kristjan()
-        self.kona = Things.Kona()
-        self.skur = Things.skur()
+        self.kona = Thing.Kona()
+        self.skur = Thing.Skur()
         self.description = """
 Þú ert á ströndinni. Það er gott veður úti og sjórinn er lygn. Í fjörunni
 gengur ljóshærð <kona> og horfir út á sjóinn. Á ströndinni kemur þú auga á
@@ -146,7 +146,7 @@ class Forrest(Room):
     def __init__(self):
         self.name = 'Skógur'
         self.things = ['villimaður']
-        self.villimadur = Things.Villimadur()
+        self.villimadur = Thing.Villimadur()
         self.description = """
 Þú ert í skóginum. Það er þétt milli trjáa og þú sérð ekki mikið. Skyndilega
 kemur <villimaður> hlaupandi úr skóginum, hann er kviknakinn fyrir utan
