@@ -81,12 +81,17 @@ svo í annað herbergi með skipuninni <changeroom>.
         self.displayskull()
         self.displaystory()
 
+        # Tökum við upphafskilaboðum frá client klasa
         recive_msg = self.crecive.recv(2048).decode('utf -8')
+
+        # Á meðan client klasinn sendir ekki 'exit' þá höldum við áfram
         while recive_msg != 'exit':
             print ('From client: ' + recive_msg)
 
-            # Leikmaður kallar á hlut
+            # Leikmaður kallar á hlut sem er inni í rúverandi herbergi
             if recive_msg in self.player.location.things:
+
+                # Köllum á interact fall herbergisins
                 interact_msg = self.player.location.interact(recive_msg, self.player.hungover, self.player.key, self.player.earring, self.player.map)
                 send_msg = interact_msg[1:]
 
@@ -120,7 +125,7 @@ svo í annað herbergi með skipuninni <changeroom>.
                 elif interact_msg[0] == '6':
                     self.player.key = True
 
-
+                # Sendum svar skilaboð á client klasa
                 self.csend.send(bytes(('1' + send_msg),'utf -8'))
 
             # Leikmaður kallar á whatshere

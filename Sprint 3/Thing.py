@@ -10,6 +10,7 @@ class Locker(Thing):
         self.msglocked = 'Skápurinn er læstur. Það er skráargat á hurðinni en það er enginn lykill í skránni.'
         self.msgopen = 'Fjársjóðurinn er fundinn! Til hamingju þú vannst'
         super(Locker, self).__init__(self.name)
+
     def interact(self, thing, hungover, key, earring, map):
         if key:
             return '0' + self.msgopen
@@ -91,7 +92,7 @@ class Kona(Thing):
         self.msg = 'setja skilaboð hér'
 
     def interact(self, thing, hungover, key, earring, map):
-        return self.
+        return self.msgS
 
 class Skur(Thing):
     def __init__(self):
