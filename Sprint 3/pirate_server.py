@@ -132,18 +132,13 @@ svo í annað herbergi með skipuninni <changeroom>.
                     self.player.key = True
                     send_msg = interact_msg[1:] + '\nÞú ert kominn með lykilinn'
 
-                # Sendum svar skilaboð á client klasa
-                self.csend.send(bytes(('1' + send_msg),'utf -8'))
-
             # Leikmaður kallar á whatshere
             elif recive_msg == 'whatshere':
                 send_msg = self.player.location.whatshere()
-                self.csend.send(bytes(('1' + send_msg),'utf -8'))
 
             # Leikmaður kallar á whereami
             elif recive_msg == 'whereami':
                 send_msg = self.player.location.whereami()
-                self.csend.send(bytes(('1' + send_msg),'utf -8'))
 
             # Leikmaður kallar á changeroom
             elif recive_msg == 'changeroom':
@@ -151,23 +146,18 @@ svo í annað herbergi með skipuninni <changeroom>.
                 self.csend.send(bytes(('1' + send_msg),'utf -8'))
                 recive_msg = self.crecive.recv(2048).decode('utf -8')
                 send_msg = self.player.changeroom(recive_msg)
-                self.csend.send(bytes(('1' + send_msg),'utf -8'))
 
             # Ef skipunin passar ekki við neina löglega skipun
             else:
                 send_msg = 'Ekki lögleg skipun'
-                self.csend.send(bytes(('1' + send_msg),'utf -8'))
 
             if self.player.isDead():
-                send_msg = 'Þú dóst'
+                send_msg = 'Þú misstir öll lífin og tapaðir'
+                self.csend.send(bytes(('0' + send_msg),'utf -8'))
+            else:
+                self.csend.send(bytes(('1' + send_msg),'utf -8'))
 
             recive_msg = self.crecive.recv(2048).decode('utf -8')
-
-
-
-
-
-
 
 # ******************************************************************************
 
