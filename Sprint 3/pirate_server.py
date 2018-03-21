@@ -190,6 +190,7 @@ def main():
         # Prentum út address-ið sem var að tengjast servernum
         print('New connection address:', addr)
         print(crecive)
+
         # Búum til PirateGame object
         PirateGame_ob = PirateGame(csend, crecive)
 
