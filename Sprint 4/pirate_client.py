@@ -21,8 +21,10 @@ def main():
 
     send_msg = ''
     recive_msg = ''
+
+    Game_Over = False
     # Endalaus While lykkja til að hafa samskipti við server clasa
-    while send_msg != 'exit':
+    while send_msg != 'exit' and Game_Over == False:
         # Tökum við skilaboðum
         recive_msg = clientrecive.recv(2048).decode('utf -8')
         # Prentum skilaboðin
@@ -34,7 +36,8 @@ def main():
             send_msg = input("-> ")
             # Sendum skilaboð á server
             clientsend.send(send_msg.encode())
-
+        if recive_msg[0] == '3':
+            Game_Over = True
 
     # Lokum socket-unum
     clientrecive.close()

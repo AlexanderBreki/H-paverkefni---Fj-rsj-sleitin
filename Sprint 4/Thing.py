@@ -11,7 +11,7 @@ class Locker(Thing):
 Skápurinn er læstur. Það er skráargat á hurðinni en það er enginn lykill í
 skránni.
 """
-        self.msgopen = """
+        self.msgopen =  '8' + """
 Fjársjóðurinn er fundinn! Til hamingju þú vannst
 """
         super(Locker, self).__init__(self.name)
@@ -99,6 +99,8 @@ fjársjóðurinn er.
             return '0' + 'Veistu ekki neitt litli kútur? Reyndu aftur'
         elif thing == 'D':
             return '0' + 'Veistu ekki neitt litli kútur? Reyndu aftur'
+        else:
+            return '0' + 'Þetta er ekki möguleiki, reyndu aftur'
 
 class Josefina(Thing):
     def __init__(self):
@@ -116,7 +118,7 @@ ráðleggur þér að tala við hann.
 
     def interact(self, thing, hungover, key, earring, map):
         if earring:
-            return '0' + self.msg
+            return '4' + self.msg
         else:
             return '2' + self.emptyhandedmsg
 
@@ -131,11 +133,10 @@ Gamli maðurinn er gallharður bindindismaður, hann finnur áfengislyktina af
 Einar muldrar eitthvað og lætur þig fá dularfullt kort sem leiðir þig að
 skóginum.
 """
-        self.hungover = True
         super(Einar, self).__init__(self.name)
 
     def interact(self, thing, hungover, key, earring, map):
-        if self.hungover:
+        if hungover == True:
             # 2 Tekur eitt líf af leikmanni
             return '2' + self.hungovermsg
         else:
@@ -182,7 +183,6 @@ ströndinni úr hliðartösku sinni og gefur þér hana.
 """
         elif thing == 'C':
             return '2' + """
-
 Rangt svar, róninn er vegan. Hann verður reiður og kastar einum ketti í þig.
 Kötturinn bregst ókvæða við og klórar þig.
 """
@@ -190,6 +190,8 @@ Kötturinn bregst ókvæða við og klórar þig.
             return '2' + """
 Rangt svar, það var ostur á samlokunni og róninn er vegan. Hann bítur þig.
 """
+        else:
+            return '0' + 'Þetta er ekki möguleiki, reyndu aftur'
 
 class Kona(Thing):
     def __init__(self):
@@ -218,9 +220,38 @@ innihald flöskunnar og losnar við þynnkuna
 
 class Villimadur(Thing):
     def __init__(self):
-        self.name = 'villimaður'
-        self.msg = 'setja skilaboð hér'
+        self.name = 'Villimaður'
+        self.msg = '7' + """
+Villimaðurinn talar góða íslensku. Þú tekur eftir því að hann heldur á
+gamalli útgáfu af Hobbitanum eftir J.R.R. Tolkien. Hann neitar að svara
+spurningum nema þú sigrir hann í gátukeppni.
+
+Fyrsta spurning:
+Hvernig kista er án lama, loks eða lykils, leynir þó gullnum sjóði?
+<A>: Mannsálin.
+<B>: Vinátta.
+<C>: Egg.
+"""
         super(Villimadur, self).__init__(self.name)
 
     def interact(self, thing, hungover, key, earring, map):
         return self.msg
+
+    def question(self, thing):
+        if thing == 'A':
+            return '2' + """
+Rangt svar. Villimaðurinn slær þig.
+"""
+        elif thing == 'B':
+            return '2' + """
+Rangt svar. Villimaðurinn slær þig.
+"""
+        elif thing == 'C':
+            return '6' + """
+Rétt svar! Þú ert helvíti seig(ur)
+
+Villimaðurinn teygir sig ofan í sveitta lendarskýluna og réttir þér lykil.
+Hann segir að þú hafir misst lykilinn á ströndinni.
+"""
+        else:
+            return '0' + 'Þetta er ekki möguleiki, reyndu aftur'

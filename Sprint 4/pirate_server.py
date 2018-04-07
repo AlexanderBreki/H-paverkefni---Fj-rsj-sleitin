@@ -15,6 +15,7 @@ class PirateGame(object):
         self.csend = csend
         self.crecive = crecive
         self.player = Player.Player()
+        self.help = '1' + """Hér koma help skilaboð."""
         self.story = ('1' +
 """
 Þú ert sjóræningi sem fékkst þér einum of mikið af rommi í gærkvöldi. Þér
@@ -77,16 +78,24 @@ svo í annað herbergi með skipuninni <changeroom>.
 
     def PlayGame(self):
         # Sendum upphafskilaboð og baksögu aðalkarakters á client
-        #self.displayskull()
+        self.displayskull()
         self.displaystory()
 
         # Tökum við upphafskilaboðum frá client klasa
         recive_msg = self.crecive.recv(2048).decode('utf -8')
-        Dead = False
+        Game_Over = False
 
         # Á meðan client klasinn sendir ekki 'exit' þá höldum við áfram
-        while recive_msg != 'exit' or Dead == True:
+        while Game_Over == False:
             print ('From client: ' + recive_msg)
+
+            # Leikmaður vill hætta.
+            if recive_msg == 'exit':
+                Game_Over = True
+
+            # Leikmaður kallar á hjálp.
+            if recive_msg == 'help':
+                send_msg = self.help
 
             # Leikmaður kallar á hlut sem er inni í rúverandi herbergi
             if recive_msg in self.player.location.things:
@@ -129,15 +138,20 @@ svo í annað herbergi með skipuninni <changeroom>.
                     self.player.hungover = False
                     send_msg = interact_msg[1:] + '\nÞú er ekki lengur þunnur'
 
-                # Kóði 5 þýðir að leikmaður fær eyrnalokka
+                # Kóði 5 þýðir að leikmaður fær skel
                 elif interact_msg[0] == '5':
                     self.player.earring = True
-                    send_msg = interact_msg[1:] + '\nÞú ert kominn með eyrnalokka'
+                    send_msg = interact_msg[1:] + '\nÞú ert kominn með fallega skel'
 
                 # Kóði 6 þýðir að leikmaður er með lykilinn að skápnum
                 elif interact_msg[0] == '6':
                     self.player.key = True
                     send_msg = interact_msg[1:] + '\nÞú ert kominn með lykilinn'
+
+                # Kóði 8 þýðir að leikmaður er með hefur unnið leikinn
+                elif interact_msg[0] == '8':
+                    send_msg = interact_msg[1:]
+                    Game_Over = True
 
             # Leikmaður kallar á whatshere
             elif recive_msg == 'whatshere':
@@ -146,6 +160,10 @@ svo í annað herbergi með skipuninni <changeroom>.
             # Leikmaður kallar á whereami
             elif recive_msg == 'whereami':
                 send_msg = self.player.location.whereami()
+
+            # Leikmaður kallar á wherecanigo
+            elif recive_msg == 'wherecanigo':
+                send_msg = self.player.location.wherecanigo(self.player.map)
 
             # Leikmaður kallar á changeroom
             elif recive_msg == 'changeroom':
@@ -159,9 +177,9 @@ svo í annað herbergi með skipuninni <changeroom>.
                 send_msg = 'Ekki lögleg skipun'
 
             if self.player.isDead():
-                send_msg = 'Þú misstir öll lífin og takk fyrir að spila'
-                Dead = True
-                self.csend.send(bytes(('1' + send_msg),'utf -8'))
+                send_msg = 'Þú misstir öll lífin og takk fyrir að spila.'
+                Game_Over = True
+                self.csend.send(bytes(('3' + send_msg),'utf -8'))
             else:
                 self.csend.send(bytes(('1' + send_msg),'utf -8'))
 
@@ -184,6 +202,8 @@ def main():
     except socket.error as msg:
         print( 'Bind failed - aborting' )
         sys.exit ()
+
+    print ("Server is running and waiting for the first connection.")
 
     # Endalaus While lykkja til að hafa samskipti við client clasa
     while True:
