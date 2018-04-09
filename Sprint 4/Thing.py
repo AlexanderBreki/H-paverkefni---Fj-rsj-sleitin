@@ -11,8 +11,8 @@ class Locker(Thing):
 Skápurinn er læstur. Það er skráargat á hurðinni en það er enginn lykill í
 skránni.
 """
-        self.msgopen =  '8' + """
-Fjársjóðurinn er fundinn! Til hamingju þú vannst
+        self.msgopen =  """
+Fjársjóðurinn er fundinn! Til hamingju þú vannst.
 """
         super(Locker, self).__init__(self.name)
 
@@ -20,7 +20,7 @@ Fjársjóðurinn er fundinn! Til hamingju þú vannst
         if key:
             return '0' + self.msgopen
         else:
-            return '0' + self.msglocked
+            return '8' + self.msglocked
 
 class Desk(Thing):
     def __init__(self):

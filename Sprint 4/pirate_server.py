@@ -116,7 +116,7 @@ svo í annað herbergi með skipuninni <changeroom>.
 
                 # Kóði 0 þýðir að ekkert gerist
                 if interact_msg[0] == '0':
-                    send_msg = interact_msg[1:] + '\n'
+                    send_msg = interact_msg[1:]
 
                 # Kóði 1 þýðir að leikmaður fær eitt líf
                 if interact_msg[0] == '1':
