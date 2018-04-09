@@ -121,32 +121,32 @@ svo í annað herbergi með skipuninni <changeroom>.
                 # Kóði 1 þýðir að leikmaður fær eitt líf
                 if interact_msg[0] == '1':
                     self.player.getLife()
-                    send_msg = interact_msg[1:] + '\nÞú færð eitt líf! Núna áttu ' + str(self.player.lifes) + ' líf eftir'
+                    send_msg = interact_msg[1:] + '\nÞú færð eitt líf! Núna áttu ' + str(self.player.lifes) + ' líf eftir \n'
 
                 # Kóði 2 þýðir að leikmaður missir eitt líf
                 elif interact_msg[0] == '2':
                     self.player.loseLife()
-                    send_msg = interact_msg[1:] + '\nÞú missir eitt líf! Núna áttu ' + str(self.player.lifes) + ' líf eftir'
+                    send_msg = interact_msg[1:] + '\nÞú missir eitt líf! Núna áttu ' + str(self.player.lifes) + ' líf eftir \n'
 
                 # Kóði 3 þýðir að leikmaður fær landakort
                 elif interact_msg[0] == '3':
                     self.player.map = True
-                    send_msg = interact_msg[1:] + '\nÞú ert kominn með landakort'
+                    send_msg = interact_msg[1:] + '\nÞú ert kominn með landakort \n'
 
                 # Kóðinn 4 þýðir að leikmaður er ekki lengur þunnur
                 elif interact_msg[0] == '4':
                     self.player.hungover = False
-                    send_msg = interact_msg[1:] + '\nÞú er ekki lengur þunnur'
+                    send_msg = interact_msg[1:] + '\nÞú er ekki lengur þunnur \n'
 
                 # Kóði 5 þýðir að leikmaður fær skel
                 elif interact_msg[0] == '5':
                     self.player.earring = True
-                    send_msg = interact_msg[1:] + '\nÞú ert kominn með fallega skel'
+                    send_msg = interact_msg[1:] + '\nÞú ert kominn með fallega skel \n'
 
                 # Kóði 6 þýðir að leikmaður er með lykilinn að skápnum
                 elif interact_msg[0] == '6':
                     self.player.key = True
-                    send_msg = interact_msg[1:] + '\nÞú ert kominn með lykilinn'
+                    send_msg = interact_msg[1:] + '\nÞú ert kominn með lykilinn \n'
 
                 # Kóði 8 þýðir að leikmaður er með hefur unnið leikinn
                 elif interact_msg[0] == '8':
