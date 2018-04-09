@@ -136,7 +136,7 @@ svo í annað herbergi með skipuninni <changeroom>.
                 # Kóðinn 4 þýðir að leikmaður er ekki lengur þunnur
                 elif interact_msg[0] == '4':
                     self.player.hungover = False
-                    send_msg = interact_msg[1:] + '\nÞú er ekki lengur þunnur \n'
+                    send_msg = interact_msg[1:] + '\nÞú ert ekki lengur þunnur \n'
 
                 # Kóði 5 þýðir að leikmaður fær skel
                 elif interact_msg[0] == '5':
