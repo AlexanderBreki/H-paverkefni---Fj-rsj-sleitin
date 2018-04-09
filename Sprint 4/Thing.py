@@ -18,9 +18,9 @@ Fjársjóðurinn er fundinn! Til hamingju þú vannst.
 
     def interact(self, thing, hungover, key, earring, map):
         if key:
-            return '0' + self.msgopen
+            return '8' + self.msgopen
         else:
-            return '8' + self.msglocked
+            return '0' + self.msglocked
 
 class Desk(Thing):
     def __init__(self):

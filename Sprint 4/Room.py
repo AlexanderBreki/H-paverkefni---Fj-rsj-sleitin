@@ -66,7 +66,7 @@ class Bar(Room):
         self.description = """
 Þú ert á barnum. Hann er ekki stór, varla nema lítill kofi við bryggjuna.
 Innan við er sterkur tóbaksfnykur. Við barinn stendur <barþjónn>, stór
-svertingi frá Kúbu, og raðar flöskum í hillur. Nokkrir gestir eru á barnum,
+maður frá Kúbu, og raðar flöskum í hillur. Nokkrir gestir eru á barnum,
 við barborðið situr <Nonni> sjóræningi sem þú þekkir ágætlega, þig rámar
 óljóst í að þú hafir hitt hann í gærkvöldi. Í dimmu horni situr
 <Einar> og skrifar í bók. Framarlega í herberginu situr
