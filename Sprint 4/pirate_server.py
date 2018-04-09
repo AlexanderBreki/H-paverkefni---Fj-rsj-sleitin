@@ -82,11 +82,12 @@ svo í annað herbergi með skipuninni <changeroom>.
         self.displaystory()
 
         # Tökum við upphafskilaboðum frá client klasa
-        recive_msg = self.crecive.recv(2048).decode('utf -8')
+        #recive_msg = self.crecive.recv(2048).decode('utf -8')
         Game_Over = False
 
         # Á meðan client klasinn sendir ekki 'exit' þá höldum við áfram
         while Game_Over == False:
+            recive_msg = self.crecive.recv(2048).decode('utf -8')
             print ('From client: ' + recive_msg)
 
             # Leikmaður vill hætta.
@@ -177,13 +178,13 @@ svo í annað herbergi með skipuninni <changeroom>.
                 send_msg = '\nEkki lögleg skipun \n'
 
             if self.player.isDead():
-                send_msg = 'Þú misstir öll lífin og takk fyrir að spila.'
+                send_msg = interact_msg[1:] + '\nÞú misstir öll lífin og takk fyrir að spila.'
                 Game_Over = True
                 self.csend.send(bytes(('3' + send_msg),'utf -8'))
             else:
                 self.csend.send(bytes(('1' + send_msg),'utf -8'))
 
-            recive_msg = self.crecive.recv(2048).decode('utf -8')
+            #recive_msg = self.crecive.recv(2048).decode('utf -8')
 
 # ******************************************************************************
 
