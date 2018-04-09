@@ -203,7 +203,7 @@ def main():
         print( 'Bind failed - aborting' )
         sys.exit ()
 
-    print ("Server is running and waiting for the first connection.")
+    print ("Server is running:")
 
     # Endalaus While lykkja til að hafa samskipti við client clasa
     while True:
