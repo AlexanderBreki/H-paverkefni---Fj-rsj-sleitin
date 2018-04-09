@@ -148,7 +148,7 @@ class Kristjan(Thing):
         self.name = 'Kristján'
         self.msg = '7' + """
 Róninn gælir við kött og segist vera svangur. Hann neitar að svara
-spurningum þínum nema hann fái að borðaself.
+spurningum þínum nema hann fái að borða.
 
 Hvernig mat gefurðu Kristjáni?
 <A>: Grænmeti.

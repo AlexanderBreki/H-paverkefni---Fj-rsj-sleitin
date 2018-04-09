@@ -116,7 +116,7 @@ svo í annað herbergi með skipuninni <changeroom>.
 
                 # Kóði 0 þýðir að ekkert gerist
                 if interact_msg[0] == '0':
-                    send_msg = interact_msg[1:]
+                    send_msg = interact_msg[1:] + '\n'
 
                 # Kóði 1 þýðir að leikmaður fær eitt líf
                 if interact_msg[0] == '1':
@@ -174,7 +174,7 @@ svo í annað herbergi með skipuninni <changeroom>.
 
             # Ef skipunin passar ekki við neina löglega skipun
             else:
-                send_msg = 'Ekki lögleg skipun'
+                send_msg = '\nEkki lögleg skipun \n'
 
             if self.player.isDead():
                 send_msg = 'Þú misstir öll lífin og takk fyrir að spila.'

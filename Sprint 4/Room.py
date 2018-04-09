@@ -40,9 +40,9 @@ herberginu er sólarljósið sem skín í gegnum götótt gluggatjöldin. Þú h
 
     def wherecanigo(self, map):
         if map:
-            return '<bar> <strönd> <skógur>'
+            return '<Bar> <Strönd> <Skógur>'
         else:
-            return '<bar> <strönd>'
+            return '<Bar> <Strönd>'
 
     def interact(self, thing, hungover, key, earring, map):
         if thing == self.things[0]:
@@ -86,9 +86,9 @@ drekkur úr vínglasi ásamt öðrum konum.
 
     def wherecanigo(self, map):
         if map:
-            return '<Káeta> <Strönd> <skógur>'
+            return '<Káeta> <Strönd> <Skógur>'
         else:
-            return '<káeta> <strönd>'
+            return '<Káeta> <Strönd>'
 
     def question(self, thing):
         return self.nonni.question(thing)
@@ -130,9 +130,9 @@ sslengda um aðra öxlina, það er <Kristján> róni.
 
     def wherecanigo(self, map):
         if map:
-            return '<káeta> <bar> <skógur>'
+            return '<Káeta> <Bar> <Skógur>'
         else:
-            return '<káeta> <bar>'
+            return '<Káeta> <Bar>'
 
     def question(self, thing):
         return self.kristjan.question(thing)
@@ -167,7 +167,7 @@ litla lendarskýlu. Hann stoppar hjá þér.
         return self.description
 
     def wherecanigo(self, map):
-        return '<káeta> <bar> <strönd>'
+        return '<Káeta> <Bar> <Strönd>'
 
     def question(self, thing):
         return self.villimadur.question(thing)
