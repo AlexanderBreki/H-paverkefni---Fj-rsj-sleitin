@@ -4,6 +4,7 @@ import sys
 import time
 import random
 import Player
+import threading
 
 # ******************************************************************************
 # Hér kemur server clasi
@@ -184,9 +185,15 @@ svo í annað herbergi með skipuninni <changeroom>.
             else:
                 self.csend.send(bytes(('1' + send_msg),'utf -8'))
 
-            #recive_msg = self.crecive.recv(2048).decode('utf -8')
 
 # ******************************************************************************
+
+def runner(csend,crecive):
+    time.sleep (1)
+    # Búum til PirateGame object
+    PirateGame_ob = PirateGame(csend, crecive)
+    # Byrjun leikinn
+    PirateGame_ob.PlayGame()
 
 # Main forrit
 def main():
@@ -195,6 +202,7 @@ def main():
     serverrecive = socket.socket(socket.AF_INET , socket. SOCK_STREAM)
     portsend = 3002
     portrecive = 3003
+    threads = []
 
     # Tengjum socket-in við port.
     try:
@@ -219,12 +227,9 @@ def main():
         # Prentum út address-ið sem var að tengjast servernum
         print('New connection address:', addr)
 
-        # Búum til PirateGame object
-        PirateGame_ob = PirateGame(csend, crecive)
-
-        # Byrjun leikinn
-        PirateGame_ob.PlayGame()
-        break
+        t = threading.Thread(target=runner, args=(csend, crecive))
+        threads.append(t)
+        t.start()
 
 
 if __name__ == '__main__':

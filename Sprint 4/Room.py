@@ -123,7 +123,10 @@ sslengda um aðra öxlina, það er <Kristján> róni.
         super(Beach, self).__init__(self.name, self.hidden)
 
     def whatshere(self):
-        return self.things
+        whatshere = ''
+        for i in self.things:
+            whatshere += '<' + i + '> '
+        return whatshere
 
     def whereami(self):
         return self.description
@@ -161,7 +164,10 @@ litla lendarskýlu. Hann stoppar hjá þér.
         super(Forrest, self).__init__(self.name, self.hidden)
 
     def whatshere(self):
-        return self.things
+        whatshere = ''
+        for i in self.things:
+            whatshere += '<' + i + '> '
+        return whatshere
 
     def whereami(self):
         return self.description
