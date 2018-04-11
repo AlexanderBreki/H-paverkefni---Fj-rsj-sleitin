@@ -3,10 +3,6 @@ import select
 import time
 
 
-# ******************************************************************************
-# Hér kemur client clasi
-# ******************************************************************************
-
 # Main forrit
 def main():
     # Búum til tvö socket, eitt til að senda skilaboð og annað til að taka á móti
@@ -17,25 +13,25 @@ def main():
     clientrecive.connect (('localhost',3002))
     clientsend.connect (('localhost',3003))
 
-    helpme = "Hér koma upplýsingar um hvernig leikurinn virkar"
-
     send_msg = ''
     recive_msg = ''
 
     Game_Over = False
     # Endalaus While lykkja til að hafa samskipti við server clasa
-    while send_msg != 'exit' and Game_Over == False:
-        # Tökum við skilaboðum
+    while Game_Over == False:
+        # Tökum við skilaboðum.
         recive_msg = clientrecive.recv(2048).decode('utf -8')
-        # Prentum skilaboðin
+        # Prentum skilaboðin.
         print (recive_msg[1:])
 
-        # Athugum hvort server vilji svar eða ekki
+        # Kóði 1 þýðir að server vill fá svar frá client.
         if recive_msg[0] == '1':
-            # Tökum við skipun frá lyklaborði
+            # Tökum við skipun frá lyklaborði.
             send_msg = input("-> ")
-            # Sendum skilaboð á server
+            # Sendum skilaboð á server.
             clientsend.send(send_msg.encode())
+
+        # Kóði 3 þýðir að loka leiknum.
         if recive_msg[0] == '3':
             Game_Over = True
 

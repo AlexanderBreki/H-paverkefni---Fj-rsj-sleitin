@@ -2,7 +2,6 @@ import socket
 import select
 import sys
 import time
-import random
 import Player
 import threading
 
@@ -237,10 +236,10 @@ def main():
         # Prentum út address-ið sem var að tengjast servernum
         print('New connection address:', addr)
 
+        # Setjum í gang nýjan spilara
         t = threading.Thread(target=runner, args=(csend, crecive))
         threads.append(t)
         t.start()
-
 
 if __name__ == '__main__':
     main()

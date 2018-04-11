@@ -25,7 +25,7 @@ class Player():
     # Fall sem breytir staðsetningu leikmanns
     def changeroom(self, nextroom):
         print (nextroom + " test1")
-        if nextroom == 'Káeta':
+        if nextroom == 'Káeta': 
             self.location = Room.Cabin()
             return self.location.whereami()
         elif nextroom == 'Bar':
