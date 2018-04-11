@@ -6,9 +6,6 @@ class Room():
 
     def getName(self):
         return self.name
-    def isHidden(self):
-        if self.Hidden: return True
-        return False
     def WhatsHere(self): pass
     def wherecanigo(self): pass
 
