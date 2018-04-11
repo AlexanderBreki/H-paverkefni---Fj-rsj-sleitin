@@ -5,7 +5,7 @@ class Player():
         self.lifes = 3
         self.hungover = True
         self.key = False
-        self.earring = False
+        self.shell = False
         self.map = False
         self.location = Room.Cabin()
 
@@ -25,7 +25,7 @@ class Player():
     # Fall sem breytir staðsetningu leikmanns
     def changeroom(self, nextroom):
         print (nextroom + " test1")
-        if nextroom == 'Káeta': 
+        if nextroom == 'Káeta':
             self.location = Room.Cabin()
             return self.location.whereami()
         elif nextroom == 'Bar':

@@ -112,7 +112,7 @@ upplýsingar aftur er hægt að kalla á <help>.
             elif recive_msg in self.player.location.things:
 
                 # Köllum á interact fall herbergisins
-                interact_msg = self.player.location.interact(recive_msg, self.player.hungover, self.player.key, self.player.earring, self.player.map)
+                interact_msg = self.player.location.interact(recive_msg, self.player.hungover, self.player.key, self.player.shell, self.player.map)
 
                 # Skilgreinum skilaboðin sem við sendum til baka, sleppum fyrsta stakinu í þeim streng
                 # því hann er notaður til að skilgreina virkni hlutarins
@@ -151,7 +151,7 @@ upplýsingar aftur er hægt að kalla á <help>.
 
                 # Kóði 5 þýðir að leikmaður fær skel
                 elif interact_msg[0] == '5':
-                    self.player.earring = True
+                    self.player.shell = True
                     send_msg = interact_msg[1:] + '\nÞú ert kominn með fallega skel \n'
 
                 # Kóði 6 þýðir að leikmaður er með lykilinn að skápnum
