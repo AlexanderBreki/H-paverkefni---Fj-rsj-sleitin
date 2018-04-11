@@ -3,7 +3,6 @@ import Thing
 class Room():
     def __init__(self, name, hidden):
         self.name = name # String
-        self.hidden = hidden # Boolean
 
     def getName(self):
         return self.name
