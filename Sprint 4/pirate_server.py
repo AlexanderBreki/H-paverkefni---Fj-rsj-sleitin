@@ -9,14 +9,18 @@ import threading
 # ******************************************************************************
 # Hér kemur server clasi
 class PirateGame(object):
-    # Skilgreinum hér grunn attribute fyrir leikinn
-
     # Smiður: Búum til nýjan leik.
     def __init__(self, csend, crecive):
+        # Skilgreinum hér grunn attribute fyrir leikinn
         self.csend = csend
         self.crecive = crecive
         self.player = Player.Player()
-        self.help = '1' + """Hér koma help skilaboð."""
+        self.help = '0' + """
+<whereami> gefur lýsingu á núverandi herbergi.
+<whatshere> gefur list af hlutum í herbergi.
+<changeroom> er notuð til að skipta um herbergi.
+<exit> lokar leiknum.
+"""
         self.story = ('1' +
 """
 Þú ert sjóræningi sem fékkst þér einum of mikið af rommi í gærkvöldi. Þér
@@ -30,7 +34,8 @@ valið að skoða nánar. Skipunin <whatshere> gefur þér lýsingu á herbergin
 allir hlutir sem þú getur skoðað eru inni í <>. Skrifaðu nafnið á þeim til
 að skoða þá nánar. Þegar þú vilt færa þig milli herbergja getur þú fengið
 lista yfir alla mögulega áfangastaði með skipuninni <wherecanigo>, og farið
-svo í annað herbergi með skipuninni <changeroom>.
+svo í annað herbergi með skipuninni <changeroom>. Til að fá þessar
+upplýsingar aftur er hægt að kalla á <help>.
 """)
         self.skull = ('0' +
 """
@@ -77,6 +82,9 @@ svo í annað herbergi með skipuninni <changeroom>.
     def displaystory(self):
         self.csend.send(bytes((self.story),'utf -8'))
 
+    def displayhelp(self):
+        self.csend.send(bytes((self.help),'utf -8'))
+
     def PlayGame(self):
         # Sendum upphafskilaboð og baksögu aðalkarakters á client
         self.displayskull()
@@ -85,6 +93,8 @@ svo í annað herbergi með skipuninni <changeroom>.
         # Tökum við upphafskilaboðum frá client klasa
         #recive_msg = self.crecive.recv(2048).decode('utf -8')
         Game_Over = False
+
+        send_msg = ''
 
         # Á meðan client klasinn sendir ekki 'exit' þá höldum við áfram
         while Game_Over == False:
@@ -97,10 +107,10 @@ svo í annað herbergi með skipuninni <changeroom>.
 
             # Leikmaður kallar á hjálp.
             if recive_msg == 'help':
-                send_msg = self.help
+                self.displayhelp()
 
             # Leikmaður kallar á hlut sem er inni í rúverandi herbergi
-            if recive_msg in self.player.location.things:
+            elif recive_msg in self.player.location.things:
 
                 # Köllum á interact fall herbergisins
                 interact_msg = self.player.location.interact(recive_msg, self.player.hungover, self.player.key, self.player.earring, self.player.map)

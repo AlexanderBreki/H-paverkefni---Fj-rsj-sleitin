@@ -57,7 +57,7 @@ herberginu er sólarljósið sem skín í gegnum götótt gluggatjöldin. Þú h
 class Bar(Room):
     def __init__(self):
         self.name = 'Bar'
-        self.things = ['barþjónn', 'Nonni', 'Fröken Jósefína', 'Einar']
+        self.things = ['barþjónn', 'Nonni', 'Jósefína', 'Einar']
         self.hidden = False
         self.bartender = Thing.Bartender()
         self.nonni = Thing.Nonni()
@@ -70,7 +70,7 @@ maður frá Kúbu, og raðar flöskum í hillur. Nokkrir gestir eru á barnum,
 við barborðið situr <Nonni> sjóræningi sem þú þekkir ágætlega, þig rámar
 óljóst í að þú hafir hitt hann í gærkvöldi. Í dimmu horni situr
 <Einar> og skrifar í bók. Framarlega í herberginu situr
-<Fröken Jósefína>, óskilgetin dóttir landsstjóra eyjunnar, við borð og
+<Jósefína>, óskilgetin dóttir landsstjóra eyjunnar, við borð og
 drekkur úr vínglasi ásamt öðrum konum.
          """
         super(Bar, self).__init__(self.name, self.hidden)

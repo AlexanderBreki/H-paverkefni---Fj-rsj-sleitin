@@ -88,7 +88,7 @@ Hver er munurinn á viskí og koníaki?
 
     def question(self, thing):
         if thing == 'A':
-            return '0' + 'Veistu ekki neitt litli kútur? Reyndu aftur'
+            return '0' + 'Veistu ekki neitt litli kútur? Reyndu aftur með því að kalla á <Nonna>'
         elif thing == 'B':
             return '0' + """
 Nonni segir þér að þið voruð að synda í sjónum á ströndinni í gærkvöldi og
@@ -96,11 +96,11 @@ rákust á róna sem býr á ströndinni, hann veit kannski eitthvað um hvar
 fjársjóðurinn er.
 """
         elif thing == 'C':
-            return '0' + 'Veistu ekki neitt litli kútur? Reyndu aftur'
+            return '0' + 'Veistu ekki neitt litli kútur? Reyndu aftur með því að kalla á <Nonna>'
         elif thing == 'D':
-            return '0' + 'Veistu ekki neitt litli kútur? Reyndu aftur'
+            return '0' + 'Veistu ekki neitt litli kútur? Reyndu aftur með því að kalla á <Nonna>'
         else:
-            return '0' + 'Þetta er ekki möguleiki, reyndu aftur'
+            return '0' + 'Þetta er ekki möguleiki, reyndu aftur með því að kalla á <Nonna>'
 
 class Josefina(Thing):
     def __init__(self):
@@ -184,14 +184,16 @@ ströndinni úr hliðartösku sinni og gefur þér hana.
         elif thing == 'C':
             return '2' + """
 Rangt svar, róninn er vegan. Hann verður reiður og kastar einum ketti í þig.
-Kötturinn bregst ókvæða við og klórar þig.
+Kötturinn bregst ókvæða við og klórar þig. Reyndu aftur með því að kalla á
+<Kristján>
 """
         elif thing == 'D':
             return '2' + """
 Rangt svar, það var ostur á samlokunni og róninn er vegan. Hann bítur þig.
+Reyndu aftur með því að kalla á <Kristján>
 """
         else:
-            return '0' + 'Þetta er ekki möguleiki, reyndu aftur'
+            return '0' + 'Þetta er ekki möguleiki, reyndu aftur með því að kalla á <Kristján>'
 
 class Kona(Thing):
     def __init__(self):
