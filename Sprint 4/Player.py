@@ -25,6 +25,10 @@ class Player():
     # Fall sem breytir staðsetningu leikmanns
     def changeroom(self, nextroom):
         print (nextroom + " test1")
+        if nextroom == 'Skógur':
+            if self.map:
+                self.location = Room.Forrest()
+                return self.location.whereami()
         if nextroom == 'Káeta':
             self.location = Room.Cabin()
             return self.location.whereami()
@@ -34,9 +38,5 @@ class Player():
         elif nextroom == 'Strönd':
             self.location = Room.Beach()
             return self.location.whereami()
-        elif nextroom == 'Skógur':
-            if self.map:
-                self.location = Room.Forrest()
-                return self.location.whereami()
         else:
-            return 'Þetta er ekki lögleg staðseting'
+            return '\nÞetta er ekki lögleg staðseting\n'
