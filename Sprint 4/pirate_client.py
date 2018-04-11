@@ -2,7 +2,6 @@ import socket
 import select
 import time
 
-
 # Main forrit
 def main():
     # Búum til tvö socket, eitt til að senda skilaboð og annað til að taka á móti
@@ -17,7 +16,7 @@ def main():
     recive_msg = ''
 
     Game_Over = False
-    # Endalaus While lykkja til að hafa samskipti við server clasa
+    # Endalaus While lykkja til að hafa samskipti við server clasa.
     while Game_Over == False:
         # Tökum við skilaboðum.
         recive_msg = clientrecive.recv(2048).decode('utf -8')
